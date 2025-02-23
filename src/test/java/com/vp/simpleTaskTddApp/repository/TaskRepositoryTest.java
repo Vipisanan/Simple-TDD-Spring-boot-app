@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TaskRepositoryTest {
 
     @Autowired
-    public TaskRepository taskRepository;
+    private TaskRepository taskRepository;
 
     @Test
     public void testSaveTask() {
@@ -32,7 +32,7 @@ public class TaskRepositoryTest {
     }
 
     @Test
-    protected void testFindTaskById() {
+    public void testFindTaskById() {
 //        arrange
         Task task = new Task();
         task.setName("Task 1");
@@ -49,7 +49,7 @@ public class TaskRepositoryTest {
     }
 
     @Test
-    protected void testUpdateTask() {
+    public void testUpdateTask() {
 //        arrange
         Task task = new Task("Task 1", "Pending");
         Task savedTask = taskRepository.save(task);
@@ -69,7 +69,7 @@ public class TaskRepositoryTest {
     }
 
     @Test
-    protected void testDeleteTask() {
+    public void testDeleteTask() {
 //        arrange
         Task task = new Task("Task 1", "Pending");
         Task savedTask = taskRepository.save(task);
