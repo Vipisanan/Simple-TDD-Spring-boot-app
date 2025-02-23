@@ -37,3 +37,31 @@ Once configured, generate and download the project, then extract it and open it 
 - **Purpose:** Marks a method as a test case to be executed by JUnit.
 - **Why Used Here?** It helps JUnit recognize which methods are test cases.
 - **Alternative:** There is no real alternative in JUnit 5, but in JUnit 4, you would use `@org.junit.Test`.
+
+### **Step 3: Service Layer Unit Test Documentation**
+
+## Annotations Used
+
+### `@ExtendWith(MockitoExtension.class)`
+
+- **Purpose:** Enables Mockito support in JUnit 5 tests by integrating Mockito’s functionality.
+- **Why Used Here?** This ensures that Mockito can automatically initialize mocks and inject them where needed.
+- **Alternative:** Instead of using `@ExtendWith(MockitoExtension.class)`, you could manually initialize mocks using `MockitoAnnotations.initMocks(this);` inside a `@BeforeEach` method.
+
+### `@Mock`
+
+- **Purpose:** Creates a mock instance of `TaskRepository`, which is injected into the service being tested.
+- **Why Used Here?** Mocking dependencies ensures that the test focuses only on the `TaskService` behavior and does not rely on database interactions.
+- **Alternative:** Instead of `@Mock`, you could manually create a mock using `mock(TaskRepository.class)`.
+
+### `@InjectMocks`
+
+- **Purpose:** Injects mocked dependencies into the `TaskService` instance.
+- **Why Used Here?** This ensures that the service class is tested with its dependencies mocked, isolating its logic from external factors.
+- **Alternative:** Manually injecting mocks using a constructor or setter methods.
+
+### `@Test`
+
+- **Purpose:** Marks a method as a test case to be executed by JUnit.
+- **Why Used Here?** It helps JUnit recognize which methods are test cases.
+- **Alternative:** In JUnit 4, you would use `@org.junit.Test`.
