@@ -65,3 +65,25 @@ Once configured, generate and download the project, then extract it and open it 
 - **Purpose:** Marks a method as a test case to be executed by JUnit.
 - **Why Used Here?** It helps JUnit recognize which methods are test cases.
 - **Alternative:** In JUnit 4, you would use `@org.junit.Test`.
+
+### **Step 4: Unit Testing the Controller Layer in Spring Boot**
+
+## Explanation of Annotations
+
+### 1. `@WebMvcTest(TaskController.class)`
+
+- This annotation is used to test only the `TaskController` class, excluding other layers like services and repositories.
+- It initializes only the web layer and provides `MockMvc` for simulating HTTP requests.
+- **Alternative:** Instead of `@WebMvcTest`, we could use `@SpringBootTest` with `@AutoConfigureMockMvc`, but that would load the entire application context, making tests slower.
+
+### 2. `@MockitoBean`
+
+- This annotation is used to create a mock instance of `TaskService`.
+- However, **`@MockitoBean` is incorrect; it should be `@MockBean`**, which is used in Spring Boot to mock dependencies within the application context.
+- **Alternative:** If we used `@SpringBootTest`, we could manually create mocks using `@Mock` instead.
+
+### 3. `@Autowired`
+
+- This is used to inject dependencies automatically.
+- Here, it is used to inject `MockMvc` and `ObjectMapper`.
+- **Alternative:** Manual instantiation of these objects, but `@Autowired` simplifies dependency management.
