@@ -17,4 +17,9 @@ public class Task {
     private Long id;
     private String name;
     private String status;
+
+    public Task(String name, String status) {
+        this.name = name;
+        this.status = status;
+    }
 }
